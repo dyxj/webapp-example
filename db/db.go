@@ -7,9 +7,7 @@ import (
 
 // database variables
 var iDB *mgo.Database
-// Read config file and set paths
-//const urlDB = "mongodb://localhost:27017/nowhere"
-//const defDB = "nowhere"
+// "Read config file and set paths"
 const urlDB = "mongodb://localhost:27017/webdev"
 const defDB = "webdev"
 
