@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <h1>Items</h1>
+      <!-- Inputs -->
+      <form [formGroup]="itemsForm">
+        <div class="form-group">
+          <label for="i_IID">IID:</label>
+          <div class="input-group">
+             <!-- <input type="number" class="form-control" id="i_IID" formControlName="IID" [(ngModel)]="mIID">  -->
+             <input type="number" class="form-control" id="i_IID" formControlName="IID"> 
+            <span class="input-group-btn">
+             <button class="btn btn-secondary" type="button" (click)="clearIID()"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="i_Name">Name:</label>
+          <input type="text" class="form-control" id="i_Name" formControlName="Name">
+          <span class="help-block" *ngIf="!itemsForm.get('Name').valid && itemsForm.get('Name').touched">Please enter a name</span>
+        </div>
+        <div class="form-group">
+          <label for="i_Desc">Description:</label>
+          <input type="text" class="form-control" id="i_Desc" formControlName="Description">
+          <span class="help-block" *ngIf="!itemsForm.get('Description').valid && itemsForm.get('Description').touched">Please enter a description</span>
+        </div>
+        <div class="form-group">
+          <label for="i_Img">ImageURL:</label>
+          <input type="text" class="form-control" id="i_Img" formControlName="ImageURL">
+        </div>
+        <p *ngIf="!itemsForm.valid && itemsForm.touched && formSubmitted">The form is invalid! {{formValid}}</p>        
+        <div *ngIf="btnControls(); then addBtnBlock else updBtnBlock"></div>
+        <ng-template #addBtnBlock><button class="btn btn-primary" type="button" [disabled]="!itemsForm.valid" (click)="onAddItem()">Add</button></ng-template>
+        <ng-template #updBtnBlock><button class="btn btn-primary" type="button" [disabled]="!itemsForm.valid" (click)="onUpdItem()">Update</button></ng-template>
+        <button class="btn btn-info" type="button" (click)="btnClearForm()">Clear</button>
+      </form>
+      <hr>
+      <button class="btn btn-primary" (click)="onGetItems()">Get All</button>
+      <button class="btn btn-info" (click)="onClearItems()">Clear Temporary</button>
+      <button class="btn btn-danger" (click)="onDelete('ALL')">Delete All</button>
+      <p>Number of items: {{items?.length || '0'}}</p>
+      <p>Name | Description | IID | ImageURL</p>
+      <ul *ngFor="let item of items">
+        <li>
+          {{item.Name}} | {{item.Description}} | {{item.IID}} | {{item.ImageURL}}
+          <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
+          <button class="btn btn-danger" (click)="onDelete(item.IID)">Delete</button>
+        </li>
+      </ul>
+    </div>
+    <!-- col end -->
+  </div>
+</div>
