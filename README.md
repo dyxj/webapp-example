@@ -24,7 +24,7 @@ Functions for database call.
 **apis/api.go**  
 Base of api files, contains general api functions that are meant to be used by other api's.
 
-**api/item.go**  
+**apis/item.go**  
 CRUD api's related to *items* and function to specify routes.
 
 **models/items/items.go**  
