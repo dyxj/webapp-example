@@ -36,19 +36,19 @@ func Close_iDB(){
 	fmt.Println("Close iDB")
 }
 
-// CopyDB
+// CopyDB : Copies internal database variable
 func Copy_iDB() *mgo.Database {
 	fmt.Println("Copy mongoDB")
 	return iDB.Session.Copy().DB(defDB)
 }
 
-// CloseDB
+// CloseDB : target database
 func CloseDB(s *mgo.Session) {
 	s.Close()
 	fmt.Println("Close mongoDB")
 }
 
-// CopyDB
+// CopyDB : target database
 func CopyDB(m *mgo.Database) *mgo.Database {
 	fmt.Println("Copy mongoDB")
 	return m.Session.Copy().DB(m.Name)

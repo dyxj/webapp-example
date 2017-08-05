@@ -7,16 +7,20 @@ import (
 	"path/filepath"
 	"webapp-example/apis"
 	"webapp-example/db"
+
 	"github.com/dyxj/gomod"
 	"github.com/gorilla/mux"
 )
 
+// Apl : Application struct
 type Apl struct {
 	router *mux.Router
 	feRoot string
 	fs     http.Handler
 }
 
+// InitApp function : Initialize application
+// feRoot : refers to the root path of front end files.
 func (a *Apl) InitApp(feRoot string) {
 	// Initialize router
 	a.router = mux.NewRouter()
@@ -37,6 +41,8 @@ func (a *Apl) initializeRoutes() {
 	a.router.PathPrefix("/").Handler(a.fs)
 }
 
+// Run function : Runs application
+// addr : port for listen and serve
 func (a *Apl) Run(addr string) {
 	fmt.Println("Connect to database")
 	db.Connect_iDB()

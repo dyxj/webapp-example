@@ -12,6 +12,7 @@ type Api struct {
 	mDB *mgo.Database
 }
 
+// InitApiRoutes : intialize api routes
 func InitApiRoutes(rt *mux.Router) {
 	sr := rt.PathPrefix("/api").Subrouter()
 	sr.StrictSlash(true).HandleFunc("/test1", ApiCall)
@@ -19,7 +20,7 @@ func InitApiRoutes(rt *mux.Router) {
 	ItemsRoutesInit(sr)
 }
 
-// Access-Control-Allow-Origin
+// withACAO : Access-Control-Allow-Origin
 func withACAO(h http.HandlerFunc) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		//fmt.Printf(r)
@@ -35,7 +36,7 @@ func withACAO(h http.HandlerFunc) http.HandlerFunc {
 	})
 }
 
-// Test Func
+// ApiWrap : Test function
 func ApiWrap(h http.HandlerFunc) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Run before
@@ -46,7 +47,7 @@ func ApiWrap(h http.HandlerFunc) http.HandlerFunc {
 	})
 }
 
-// Test Func
+// ApiCall : Test function
 func ApiCall(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(r.RequestURI)
 	//fmt.Println(r.Body)
