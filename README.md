@@ -39,5 +39,5 @@ Contains compiled Angular2/4 frontend.
 **AngularItemComponent**  
 Contains Angular components and service related to items.
 
-## Web App Demo ##
+## Web App Image ##
 ![Alt text](/webapp-example.png?at=master&fileviewer=file-view-default)
