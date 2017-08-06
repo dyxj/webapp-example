@@ -2,7 +2,7 @@
 An example of a basic CRUD web application written with **Go** and **Angular2/4** using **MongoDB**.  
   
 Saw some questions on building a web application with **Go** and **Angular2/4** but couldn't find an example online, so I wrote one. Written to help people new to **Go**.  
-Looking to get critique from **forum.golangbridge.org** will post link to discussion when available.
+Looking to get critique. =)  
 
 ## Prerequisites ##
 * Go
