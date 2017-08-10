@@ -2,7 +2,7 @@ package util
 
 import (
 	"time"
-	"fmt"
+	"log"
 	"net/http"
 	"path/filepath"
 	"strings"
@@ -50,10 +50,10 @@ func (d DirD) Open(name string) (http.File, error) {
 // TrackTime : Used to track execution time,
 // Can be used with defer to get execution time of function
 // ie:
-// defer log.Println(TrackTime(time.Now(), "funcName()"))
-func TrackTime(start time.Time, fname string) string {
+// defer TrackTime(time.Now(), "funcName()")
+func TrackTime(start time.Time, fname string) {
 	//t := time.Since(start).Nanoseconds()
 	//return fmt.Sprintf("%s execution time: %s\n", fname, strconv.Itoa(int(t)))
 	t := time.Since(start)
-	return fmt.Sprintf("%s execution time: %s\n", fname, t)
+	log.Printf("%s execution time: %s\n", fname, t)
 }
